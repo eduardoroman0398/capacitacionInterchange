@@ -3,6 +3,8 @@ package definitions;
 import io.cucumber.java.en.And;
 import pageobjects.dashboard08Page;
 
+import java.io.IOException;
+
 public class dashboard08SD {
 
     dashboard08Page dashboard08;
@@ -26,7 +28,7 @@ public class dashboard08SD {
     }
 
     @And("Seleccionar opciones de Scheme Rates by Product Type {}")
-    public void seleccionarOpcionesDeSchemeRatesByProductType(String ratesProducType) {
+    public void seleccionarOpcionesDeSchemeRatesByProductType(String ratesProducType) throws IOException, InterruptedException {
         dashboard08.seleccionarOpcionesSchemeRatesByProductType(ratesProducType);
     }
 

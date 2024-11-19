@@ -3,6 +3,8 @@ package definitions;
 import io.cucumber.java.en.And;
 import pageobjects.portalPage;
 
+import java.io.IOException;
+
 public class portalSD {
 
     portalPage portal;
@@ -17,7 +19,7 @@ public class portalSD {
     }
 
     @And("Ingresamos nueva url {}")
-    public void ingresamosNuevaUrl(String url) throws InterruptedException {
+    public void ingresamosNuevaUrl(String url) throws InterruptedException, IOException {
         portal.ingresaNuevaUrl(url);
     }
 }

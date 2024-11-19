@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
 import java.io.IOException;
+import java.net.HttpRetryException;
 
 public class interchangePage extends util {
 
@@ -32,6 +33,7 @@ public class interchangePage extends util {
         WebElement dropdownOption = driver.findElement(By.xpath("//li[contains(text(), '" + dashboard + "')]"));
         Thread.sleep(2_000);
         dropdownOption.click();
+        Thread.sleep(3_000);
         evidencias();
     }
 
@@ -48,7 +50,7 @@ public class interchangePage extends util {
         System.out.println("El negocio seleccionado es: " + negocio);
     }
 
-    public void seleccionarFiltroGlobalTransaccion(String transaccion) throws InterruptedException {
+    public void seleccionarFiltroGlobalTransaccion(String transaccion) throws InterruptedException, IOException {
         Thread.sleep(3_000);
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(cmbTransaccion));
         dropdown.click();
@@ -57,9 +59,11 @@ public class interchangePage extends util {
         WebElement optionElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='" + transaccion + "']")));
         optionElement.click();
         System.out.println("El negocio seleccionado es: " + transaccion);
+        Thread.sleep(3_000);
+        evidencias();
     }
 
-    public void seleccionarAccionExportToPDF(String accion) throws InterruptedException {
+    public void seleccionarAccionExportToPDF(String accion) throws InterruptedException, IOException {
         Thread.sleep(5_000);
         WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(menuLocal));
         menu.click();
@@ -72,6 +76,8 @@ public class interchangePage extends util {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", actionOption);
         System.out.println("La accion seleccionada es: " + accion);
+        Thread.sleep(3_000);
+        evidencias();
     }
 
     public void seleccionarAccionFiltrosLocales(String accion) throws InterruptedException {
@@ -184,7 +190,7 @@ public class interchangePage extends util {
         System.out.println("El funding seleccionado es: " + funding);
     }
 
-    public void selectCard(String card) throws InterruptedException {
+    public void selectCard(String card) throws InterruptedException, IOException {
         WebElement cardDropdown = driver.findElement(By.id("ej2_dropdownlist_11"));
         Thread.sleep(1_000);
         cardDropdown.click();
@@ -192,6 +198,8 @@ public class interchangePage extends util {
         cardOption.click();
         cardDropdown.click();
         System.out.println("El card seleccionado es: " + card);
+        Thread.sleep(3_000);
+        evidencias();
     }
 
     public void clickApply() throws InterruptedException {

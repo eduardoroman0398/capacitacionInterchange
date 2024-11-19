@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
+import java.io.IOException;
+
 
 public class dashboard06Page extends util {
 
@@ -14,7 +16,7 @@ public class dashboard06Page extends util {
         PageFactory.initElements(driver, this);
     }
 
-    public void seleccionarOpcionesDeDashboard06(String productType){
+    public void seleccionarOpcionesDeDashboard06(String productType) throws InterruptedException, IOException {
         String xpath = "//*[contains(@id, 'Series_0_Point_') and @aria-label[contains(.,'" + productType + "')]]";
 
         try {
@@ -26,6 +28,8 @@ public class dashboard06Page extends util {
         } catch (Exception e) {
             System.out.println("Feature not found or not clickable: " + productType);
         }
+        Thread.sleep(3_000);
+        evidencias();
 
     }
 

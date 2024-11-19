@@ -3,6 +3,8 @@ package definitions;
 import io.cucumber.java.en.And;
 import pageobjects.dashboard11Page;
 
+import java.io.IOException;
+
 public class dashboard11SD {
 
     dashboard11Page dashboard11;
@@ -22,7 +24,7 @@ public class dashboard11SD {
     }
 
     @And("Seleccionar opciones de Growth for Top 5 MCCs")
-    public void seleccionarOpcionesDeGrowthForTopMCCs() {
+    public void seleccionarOpcionesDeGrowthForTopMCCs() throws IOException, InterruptedException {
         dashboard11.seleccionarViewMoreGrowthForTopMCCs();
     }
 }

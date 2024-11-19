@@ -30,7 +30,7 @@ public class dashboard02SD {
     }
 
     @And("Seleccionamos la seccion Interchange Fees by Program {}")
-    public void seleccionamosLaSeccionInterchangeFeesByProgram(String programType) {
+    public void seleccionamosLaSeccionInterchangeFeesByProgram(String programType) throws IOException, InterruptedException {
         dashboard02.seleccionar_Interchange_Fees_By_Program(programType);
     }
 }

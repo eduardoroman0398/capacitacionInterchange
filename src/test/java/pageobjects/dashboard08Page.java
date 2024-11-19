@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
+import java.io.IOException;
+
 public class dashboard08Page extends util {
 
     @FindBy(xpath = "/html/body/ngb-modal-window/div/div/div[1]/button") protected WebElement btnCerrarPopUp;
@@ -64,7 +66,7 @@ public class dashboard08Page extends util {
         btnCerrarPopUp.click();
     }
 
-    public void seleccionarOpcionesSchemeRatesByProductType(String ratesProducType) {
+    public void seleccionarOpcionesSchemeRatesByProductType(String ratesProducType) throws IOException, InterruptedException {
         String xpath = "//*[contains(@id, 'chart-serieDataLabelClickable-6e1548dd-2b2b-4e82-b289-fb9e706608c3') and @aria-label[contains(.,'" + ratesProducType + "')]]";
         try {
             // Esperar hasta que la barra específica sea clickeable y hacer clic
@@ -79,6 +81,8 @@ public class dashboard08Page extends util {
         //Cerrar pop-up
         wait.until(ExpectedConditions.elementToBeClickable(btnCerrarPopUp));
         btnCerrarPopUp.click();
+        Thread.sleep(3_000);
+        evidencias();
     }
 
 

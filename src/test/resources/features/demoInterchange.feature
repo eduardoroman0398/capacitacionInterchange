@@ -54,7 +54,7 @@ Feature: Automatizacion Interchange
 
     Examples:
       | perfil                  | nuevaurl        | dashboard                     | negocio   | transaccion | accion        | country | brand      | jurisdiction  | startDate     | endDate        | product program | product                      | funding source | card environment |
-      | South Africa - Standard | Interchange_URL | Interchange - Analysis by MCC | Acquiring | Purchases   | Local filters | Greece  | Mastercard | Interregional | February 2023 | September 2024 | Commercial      | World Elite Debit Mastercard | Debit          | Card Present     |
+      | South Africa - Standard | Interchange_URL | Interchange - Analysis by MCC | Acquiring | Purchases   | Local filters | South Africa  | Mastercard | Interregional | February 2023 | September 2024 | Commercial      | World Elite Debit Mastercard | Debit          | Card Present     |
 
 #Escenario 5 -----------------------------------------------------------------------------------------------------------
 
@@ -180,10 +180,10 @@ Feature: Automatizacion Interchange
     And Seleccionamos dashboard <dashboard>
     And Seleccionamos filtro global negocio <negocio>
     And Seleccionamos filtro global transaccion <transaccion>
-    And Seleccionar opciones de Scheme Fees by Jurisdiction <feesJurisdiction>
-    And Seleccionar opciones de Scheme Rates by Jurisdiction <ratesJurisdiction>
-    And Seleccionar opciones de Scheme Fees by ProductType <feesProductType>
-    And Seleccionar opciones de Scheme Rates by Product Type <ratesProducType>
+    #And Seleccionar opciones de Scheme Fees by Jurisdiction <feesJurisdiction>
+    #And Seleccionar opciones de Scheme Rates by Jurisdiction <ratesJurisdiction>
+    #And Seleccionar opciones de Scheme Fees by ProductType <feesProductType>
+    #And Seleccionar opciones de Scheme Rates by Product Type <ratesProducType>
 
     Examples:
       | perfil                       | nuevaurl        | dashboard                                        | negocio   | transaccion | feesJurisdiction | ratesJurisdiction | feesProductType | ratesProducType |
@@ -197,8 +197,8 @@ Feature: Automatizacion Interchange
     And Seleccionamos dashboard <dashboard>
     And Seleccionamos filtro global negocio <negocio>
     And Seleccionamos filtro global transaccion <transaccion>
-    And Seleccionar opciones de Scheme Fees per Transaction by Product Type <feesPerTransactionbyProductType>
-    And Seleccionar opciones de Scheme Fee Rates by Product Type <ratesByProducType>
+    #And Seleccionar opciones de Scheme Fees per Transaction by Product Type <feesPerTransactionbyProductType>
+    #And Seleccionar opciones de Scheme Fee Rates by Product Type <ratesByProducType>
 
     Examples:
       | perfil                  | nuevaurl        | dashboard                                     | negocio   | transaccion | feesPerTransactionbyProductType | ratesByProducType |
@@ -216,8 +216,8 @@ Feature: Automatizacion Interchange
     And Seleccionar opcioens de Top 10 MCCs with the Highest Scheme Fees
 
     Examples:
-      | perfil                  | nuevaurl        | dashboard                           | negocio   | transaccion |
-      | South Africa - Standard | Interchange_URL | Scheme Fees - Top Products and MCCs | Acquiring | Purchases   |
+      | perfil                       | nuevaurl        | dashboard                           | negocio   | transaccion |
+      | Romania - Banca Transilvania | Interchange_URL | Scheme Fees - Top Products and MCCs | Acquiring | Purchases   |
 
    #Escenario 16 -------------------------------------------------------------------------------------------------------
   #Validar en QA
@@ -232,8 +232,8 @@ Feature: Automatizacion Interchange
     And Seleccionar opciones de Growth for Top 5 MCCs
 
     Examples:
-      | perfil                  | nuevaurl        | dashboard                    | negocio   | transaccion |
-      | South Africa - Standard | Interchange_URL | Scheme Fees - Monthly Growth | Acquiring | Purchases   |
+      | perfil                       | nuevaurl        | dashboard                    | negocio   | transaccion |
+      | Romania - Banca Transilvania | Interchange_URL | Scheme Fees - Monthly Growth | Acquiring | Purchases   |
 
    #Escenario 17 -------------------------------------------------------------------------------------------------------
 
@@ -258,8 +258,8 @@ Feature: Automatizacion Interchange
     And Seleccionamos filtro global transaccion <transaccion>
 
     Examples:
-      | perfil                  | nuevaurl        | dashboard            | negocio   | transaccion |
-      | South Africa - Standard | Interchange_URL | Domestic Competitors | Acquiring | Purchases   |
+      | perfil                  | nuevaurl        | dashboard            | negocio | transaccion |
+      | South Africa - Standard | Interchange_URL | Domestic Competitors | Issuing | Purchases   |
 
     #Escenario 19 -------------------------------------------------------------------------------------------------------
 

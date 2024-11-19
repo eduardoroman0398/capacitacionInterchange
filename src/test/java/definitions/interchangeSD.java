@@ -25,12 +25,12 @@ public class interchangeSD {
     }
 
     @And("Seleccionamos filtro global transaccion {}")
-    public void seleccionamosFiltroGlobalTransaccion(String transaccion) throws InterruptedException {
+    public void seleccionamosFiltroGlobalTransaccion(String transaccion) throws InterruptedException, IOException {
         interchange.seleccionarFiltroGlobalTransaccion(transaccion);
     }
 
     @Then("Seleccionamos la accion Export to PDF {}")
-    public void seleccionamosLaAccionExportarToPDF(String accion) throws InterruptedException {
+    public void seleccionamosLaAccionExportarToPDF(String accion) throws InterruptedException, IOException {
         interchange.seleccionarAccionExportToPDF(accion);
     }
 
@@ -40,7 +40,7 @@ public class interchangeSD {
     }
 
     @And("Rellenamos campos {}, {}, {}, {}, {}, {}, {}, {}, {}")
-    public void rellenamosCampos(String country, String brand, String jurisdiction, String startDate, String endDate, String productProgram, String product, String funding, String card) throws InterruptedException {
+    public void rellenamosCampos(String country, String brand, String jurisdiction, String startDate, String endDate, String productProgram, String product, String funding, String card) throws InterruptedException, IOException {
         interchange.selectCountry(country);
         interchange.selectBrand(brand);
         interchange.selectJurisdiction(jurisdiction);
@@ -51,5 +51,6 @@ public class interchangeSD {
         interchange.selectFunding(funding);
         interchange.selectCard(card);
         interchange.clickApply();
+        Thread.sleep(3_000);
     }
 }

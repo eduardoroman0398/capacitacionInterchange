@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
+import java.io.IOException;
 import java.util.Objects;
 
 
@@ -36,7 +37,7 @@ public class portalPage extends util {
         System.out.println("El perfil seleccionado es: " + perfil);
     }
 
-    public void ingresaNuevaUrl(String nuevaUrl) throws InterruptedException {
+    public void ingresaNuevaUrl(String nuevaUrl) throws InterruptedException, IOException {
         if (Objects.equals(nuevaUrl, "Interchange_URL_UAT")){
             Thread.sleep(2_000);
             driver.get(Interchange_URL_UAT);
@@ -48,6 +49,9 @@ public class portalPage extends util {
             driver.get(Interchange_URL);
             System.out.println("Ingresamos a la nueva url: " + nuevaUrl);
         }
+
+        Thread.sleep(3_000);
+        evidencias();
     }
 
 }

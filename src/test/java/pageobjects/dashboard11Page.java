@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
+import java.io.IOException;
+
 public class dashboard11Page extends util {
 
     @FindBy(xpath = "//*[@id=\"int-wrapper\"]/div/app-home/div/div/app-scheme-analysis/div/div[2]/div[1]/div[1]/button") protected WebElement btnExportToExcelGrowthbyJurisdiction;
@@ -35,7 +37,7 @@ public class dashboard11Page extends util {
     }
 
 
-    public void seleccionarViewMoreGrowthForTopMCCs() {
+    public void seleccionarViewMoreGrowthForTopMCCs() throws InterruptedException, IOException {
         wait.until(ExpectedConditions.elementToBeClickable(btnViewMoreGrowthForTopMCCs));
         btnViewMoreGrowthForTopMCCs.click();
         System.out.println("Se clickeo en el boton View More de GrowthForTopMCCs");
@@ -43,5 +45,7 @@ public class dashboard11Page extends util {
         //Cerrar popUp
         wait.until(ExpectedConditions.elementToBeClickable(btnCerrarPopUp));
         btnCerrarPopUp.click();
+        Thread.sleep(3_000);
+        evidencias();
     }
 }

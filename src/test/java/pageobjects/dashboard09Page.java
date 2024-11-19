@@ -1,5 +1,6 @@
 package pageobjects;
 
+import com.sun.jdi.ThreadGroupReference;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +33,7 @@ public class dashboard09Page extends util {
         btnCerrarPopUp.click();
     }
 
-    public void seleccionarOpcionesSchemeFeeRatesByProductType(String ratesByProducType) {
+    public void seleccionarOpcionesSchemeFeeRatesByProductType(String ratesByProducType) throws InterruptedException {
         String xpath = "//*[contains(@id, 'chart-serieDataLabelClickable-69ea9ddc-a411-468f-9378-950e9ea1d91e') and @aria-label[contains(.,'" + ratesByProducType + "')]]";
         try {
             // Esperar hasta que la barra específica sea clickeable y hacer clic
@@ -47,5 +48,6 @@ public class dashboard09Page extends util {
         //Cerrar pop-up
         wait.until(ExpectedConditions.elementToBeClickable(btnCerrarPopUp));
         btnCerrarPopUp.click();
+        Thread.sleep(3_000);
     }
 }

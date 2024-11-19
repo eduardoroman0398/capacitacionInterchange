@@ -16,7 +16,7 @@ public class dashboard09SD {
     }
 
     @And("Seleccionar opciones de Scheme Fee Rates by Product Type {}")
-    public void seleccionarOpcionesDeSchemeFeeRatesByProductType(String ratesByProducType) {
+    public void seleccionarOpcionesDeSchemeFeeRatesByProductType(String ratesByProducType) throws InterruptedException {
         dashboard09.seleccionarOpcionesSchemeFeeRatesByProductType(ratesByProducType);
     }
 }

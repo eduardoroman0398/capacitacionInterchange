@@ -3,6 +3,8 @@ package definitions;
 import io.cucumber.java.en.And;
 import pageobjects.dashboard10Page;
 
+import java.io.IOException;
+
 public class dashboard10SD {
 
     dashboard10Page dashboard10;
@@ -17,7 +19,7 @@ public class dashboard10SD {
     }
 
     @And("Seleccionar opcioens de Top 10 MCCs with the Highest Scheme Fees")
-    public void seleccionarOpcioensDeTopMCCsWithTheHighestSchemeFees() {
+    public void seleccionarOpcioensDeTopMCCsWithTheHighestSchemeFees() throws IOException, InterruptedException {
         dashboard10.seleccionarTopMCCsWithTheHighestSchemeFees();
     }
 }

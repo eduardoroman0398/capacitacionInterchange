@@ -109,7 +109,7 @@ public class dashboard02Page extends util {
         System.out.println("El valor seleccionado en la seccion Interchange Fees by Product Type es: " + productType);
     }
 
-    public void seleccionar_Interchange_Fees_By_Program(String programType) {
+    public void seleccionar_Interchange_Fees_By_Program(String programType) throws IOException, InterruptedException {
         // Esperamos a que el gráfico esté visible
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ejs-chart")));
 
@@ -144,5 +144,9 @@ public class dashboard02Page extends util {
             System.out.println("No se pudo hacer clic después de 3 intentos.");
         }
         System.out.println("El valor seleccionado en la seccion Interchange Fees by Program es: " + programType);
+
+        Thread.sleep(3_009);
+        evidencias();
     }
+
 }

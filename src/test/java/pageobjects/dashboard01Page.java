@@ -36,6 +36,7 @@ public class dashboard01Page extends util {
         btnNumberOfActiveMerchantIDs.click();
         Thread.sleep(1_000);
         btnNumberofInterchangeRulesApplied.click();
+        Thread.sleep(3_000);
         evidencias();
     }
 }

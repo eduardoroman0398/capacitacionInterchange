@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import support.util;
 
+import java.io.IOException;
+
 public class dashboard10Page extends util {
 
     @FindBy(xpath = "//*[@id=\"int-wrapper\"]/div/app-home/div/div/app-top-product-mcc/div/div[1]/div[1]/button") protected WebElement btnViewMoreTop10ProductswiththeHighestSchemeFees;
@@ -26,7 +28,7 @@ public class dashboard10Page extends util {
         btnCerrarPopUp.click();
     }
 
-    public void seleccionarTopMCCsWithTheHighestSchemeFees() {
+    public void seleccionarTopMCCsWithTheHighestSchemeFees() throws IOException, InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(btnViewMoreTopMCCsWithTheHighestSchemeFees));
         btnViewMoreTopMCCsWithTheHighestSchemeFees.click();
         System.out.println("Se selecciono el boton de View More de btnViewMoreTopMCCsWithTheHighestSchemeFees");
@@ -34,5 +36,7 @@ public class dashboard10Page extends util {
         //Cerrar el popuP
         wait.until(ExpectedConditions.elementToBeClickable(btnCerrarPopUp));
         btnCerrarPopUp.click();
+        Thread.sleep(3_000);
+        evidencias();
     }
 }
