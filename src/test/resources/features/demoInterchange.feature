@@ -1,0 +1,276 @@
+@Test
+Feature: Automatizacion Interchange
+
+  Background:
+    Given Ingresar la url de la pagina "QA"
+    When Ingresamos credenciales "eduardo.roman@intelica.com", "depapym"
+    And Seleccionamos Generate Token
+    Then Verificamos el inicio de sesion correcto "Security Questions"
+
+#Escenario 1 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Ingresar a la pagina de Interchange
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+
+    Examples:
+      | perfil                  | nuevaurl        |
+      | South Africa - Standard | Interchange_URL |
+
+#Escenario 2 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar el dashboard deseado
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                                      |
+      | South Africa - Standard | Interchange_URL | Interchange - Fees, Jurisdictions and Products |
+
+#Escenario 3 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar filtros Globales
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                     | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Interchange - Analysis by MCC | Acquiring | Purchases   |
+
+#Escenario 4 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar filtros Locales
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    #And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionamos la accion Filtros locales <accion>
+    Then Rellenamos campos <country>, <brand>, <jurisdiction>, <startDate>, <endDate>, <product program>, <product>, <funding source>, <card environment>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                     | negocio   | transaccion | accion        | country | brand      | jurisdiction  | startDate     | endDate        | product program | product                      | funding source | card environment |
+      | South Africa - Standard | Interchange_URL | Interchange - Analysis by MCC | Acquiring | Purchases   | Local filters | Greece  | Mastercard | Interregional | February 2023 | September 2024 | Commercial      | World Elite Debit Mastercard | Debit          | Card Present     |
+
+#Escenario 5 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Exportar a PDF
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    #And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    Then Seleccionamos la accion Export to PDF <accion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard | negocio   | transaccion | accion        |
+      | South Africa - Standard | Interchange_URL | Summary   | Acquiring | Purchases   | Export to PDF |
+
+#Escenario 6 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 01
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    #And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionamos opciones de Financial Metrics
+    Then Seleccionamos opciones de Business Intelligence Metrics
+
+    Examples:
+      | perfil                  | nuevaurl        | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Acquiring | Purchases   |
+
+#Escenario 7 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 02
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    #And Seleccionamos la seccion Interchange Fees Detail
+    #And Seleccionamos la seccion Interchange Fees generated by Jurisdiction <barJurisdiction>
+    #And Seleccionamos la seccion Interchange Fees by Product Type <productType>
+    And Seleccionamos la seccion Interchange Fees by Program <programType>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                                      | negocio   | transaccion | barJurisdiction | productType | programType |
+      | South Africa - Standard | Interchange_URL | Interchange - Fees, Jurisdictions and Products | Acquiring | Purchases   | Intraregional   | Debit       | Consumer    |
+
+#Escenario 8 -----------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 03
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    #Then Los nombres deben incluir el MCC <mccName>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                     | negocio   | transaccion | mccName                          |
+      | South Africa - Standard | Interchange_URL | Interchange - Analysis by MCC | Acquiring | Purchases   | 3. 6537 - MoneySend Intercountry |
+
+ #Escenario 9 ---------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 04
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                           | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Interchange - Top Products and MCCs | Acquiring | Purchases   |
+
+  #Escenario 10 --------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 05
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Exportar excel de la seccion Growth by Jurisdiction
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                    | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Interchange - Monthly Growth | Acquiring | Purchases   |
+
+  #Escenario 11 --------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 06
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionamos opciones de la seccion Volume by Product Type <productType>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                                                    | negocio   | transaccion | productType |
+      | South Africa - Standard | Interchange_URL | Transaction and Volumes - Brands, Jurisdictions and Products | Acquiring | Purchases   | Credit      |
+
+
+  #Escenario 12 --------------------------------------------------------------------------------------------------------
+  #VALIDAR EN QA
+  Scenario Outline: Seleccionar opciones de Dashboard 07
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Exportar excel de Growth By Jurisdiction
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                                | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Transaction and Volumes - Monthly Growth | Acquiring | Purchases   |
+
+  #Escenario 13 --------------------------------------------------------------------------------------------------------
+  #Validar en QA
+  Scenario Outline: Seleccionar opciones de Dashboard 08
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionar opciones de Scheme Fees by Jurisdiction <feesJurisdiction>
+    And Seleccionar opciones de Scheme Rates by Jurisdiction <ratesJurisdiction>
+    And Seleccionar opciones de Scheme Fees by ProductType <feesProductType>
+    And Seleccionar opciones de Scheme Rates by Product Type <ratesProducType>
+
+    Examples:
+      | perfil                       | nuevaurl        | dashboard                                        | negocio   | transaccion | feesJurisdiction | ratesJurisdiction | feesProductType | ratesProducType |
+      | Romania - Banca Transilvania | Interchange_URL | Scheme Fees - Brands, Jurisdictions and Products | Acquiring | Purchases   | Intraregional    | Domestic On-Us    | Credit          | Credit          |
+
+  #Escenario 14 -------------------------------------------------------------------------------------------------------
+  #Validar en QA
+  Scenario Outline: Seleccionar opciones de Dashboard 09
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionar opciones de Scheme Fees per Transaction by Product Type <feesPerTransactionbyProductType>
+    And Seleccionar opciones de Scheme Fee Rates by Product Type <ratesByProducType>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                                     | negocio   | transaccion | feesPerTransactionbyProductType | ratesByProducType |
+      | South Africa - Standard | Interchange_URL | Scheme Fees - Cost per Transaction and Volume | Acquiring | Purchases   | Debit                           | Debit             |
+
+  #Escenario 15 -------------------------------------------------------------------------------------------------------
+  #Validar en QA
+  Scenario Outline: Seleccionar opciones de Dashboard 10
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionar opciones de Top 10 Products with the Highest Scheme Fees
+    And Seleccionar opcioens de Top 10 MCCs with the Highest Scheme Fees
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                           | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Scheme Fees - Top Products and MCCs | Acquiring | Purchases   |
+
+   #Escenario 16 -------------------------------------------------------------------------------------------------------
+  #Validar en QA
+  Scenario Outline: Seleccionar opciones de Dashboard 11
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+    And Seleccionar exportar excel de Growth By Jurisdiction
+    And Seleccionar opciones de Growth by Product Type
+    And Seleccionar opciones de Growth for Top 5 MCCs
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard                    | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Scheme Fees - Monthly Growth | Acquiring | Purchases   |
+
+   #Escenario 17 -------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 12
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard         | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Merchant Analysis | Acquiring | Purchases   |
+
+   #Escenario 18 -------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 13
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard            | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Domestic Competitors | Acquiring | Purchases   |
+
+    #Escenario 19 -------------------------------------------------------------------------------------------------------
+
+  Scenario Outline: Seleccionar opciones de Dashboard 14
+    And Seleccionamos el perfil <perfil>
+    And Ingresamos nueva url <nuevaurl>
+    And Seleccionamos dashboard <dashboard>
+    And Seleccionamos filtro global negocio <negocio>
+    And Seleccionamos filtro global transaccion <transaccion>
+
+    Examples:
+      | perfil                  | nuevaurl        | dashboard              | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | International Activity | Acquiring | Purchases   |
+
