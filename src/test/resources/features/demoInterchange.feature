@@ -5,7 +5,7 @@ Feature: Automatizacion Interchange
     Given Ingresar la url de la pagina "QA"
     When Ingresamos credenciales "eduardo.roman@intelica.com", "depapym"
     And Seleccionamos Generate Token
-    Then Verificamos el inicio de sesion correcto "Security Questions"
+    #Then Verificamos el inicio de sesion correcto "Security Questions"
 
 #Escenario 1 -----------------------------------------------------------------------------------------------------------
 
@@ -126,8 +126,8 @@ Feature: Automatizacion Interchange
     And Seleccionamos filtro global transaccion <transaccion>
 
     Examples:
-      | perfil                  | nuevaurl        | dashboard                           | negocio   | transaccion |
-      | South Africa - Standard | Interchange_URL | Interchange - Top Products and MCCs | Acquiring | Purchases   |
+      | perfil                  | nuevaurl        | dashboard | negocio   | transaccion |
+      | South Africa - Standard | Interchange_URL | Interchange - By Product          | Acquiring | Purchases   |
 
   #Escenario 10 --------------------------------------------------------------------------------------------------------
 

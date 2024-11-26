@@ -15,11 +15,11 @@ public class hooks {
         driver.manage().window().maximize();//maximizar pantalla
     }
 
-    /*@After
+    @After
     public static void tearDown(){
        driver.manage().deleteAllCookies();
        driver.close();
-   }*/
+   }
 
     public static String QA_URL = "https://incontrolqa.intelica.com/login/es";
 
